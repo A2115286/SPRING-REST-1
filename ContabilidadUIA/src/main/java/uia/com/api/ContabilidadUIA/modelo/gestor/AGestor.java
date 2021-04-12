@@ -2,6 +2,7 @@ package uia.com.api.ContabilidadUIA.modelo.gestor;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,17 +13,21 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import uia.com.api.ContabilidadUIA.modelo.clientes.InfoUIA;
-import  uia.com.api.ContabilidadUIA.modelo.clientes.ListaInfoUIA;
+import uia.com.api.ContabilidadUIA.modelo.clientes.ListaInfoUIA;
 
 public abstract class AGestor implements IGestor{
 	
+	ListaInfoUIA miLista = null;
 	protected Map<String, InfoUIA> catalogoMaestro = null;
+	public String  nomFile;
+
+	
 	
     public AGestor(String nomFile)
     {
     	ObjectMapper mapper = new ObjectMapper();
         
-        ListaInfoUIA miLista = null;
+        
         
 		try {
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -63,7 +68,7 @@ public abstract class AGestor implements IGestor{
 	}
 
 
-	public void setCatalogo(Map<String, InfoUIA> catalogoMaestro) {
+	public void agregaCatalogo(Map<String, InfoUIA> catalogoMaestro) {
 		this.catalogoMaestro = catalogoMaestro;
 	}
 
@@ -86,4 +91,34 @@ public abstract class AGestor implements IGestor{
     	else
     		return null;
     }
+
+
+
+	public void salva()
+	{
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			mapper.writeValue(Paths.get(nomFile).toFile(), miLista);
+		}
+		catch(JsonParseException e) {
+			e.printStackTrace();
+		}
+		catch (JsonMappingException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	
+
+	}
+
+
+	public ListaInfoUIA getMiLista() {
+		return miLista;
+	}
+
+
+	
 }

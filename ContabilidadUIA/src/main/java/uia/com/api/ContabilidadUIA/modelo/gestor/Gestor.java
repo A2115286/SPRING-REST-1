@@ -3,6 +3,7 @@ package uia.com.api.ContabilidadUIA.modelo.gestor;
 import java.util.Map;
 
 import  uia.com.api.ContabilidadUIA.modelo.clientes.InfoUIA;
+import uia.com.api.ContabilidadUIA.modelo.clientes.ListaInfoUIA;
 
 public class Gestor extends AGestor{
 
@@ -31,11 +32,10 @@ public class Gestor extends AGestor{
 
 	@Override
 	public void Busca() {
-		
-		
+				
 	}
-
-
+	
+	
 	@Override
 	public IGestor getGestor() {
 		// TODO Auto-generated method stub
@@ -54,5 +54,20 @@ public class Gestor extends AGestor{
 	public Map<String, InfoUIA> getCatalogoMaestro() {
 		return super.getCatalogoMaestro();
 	}
+
+
+	@Override
+	public InfoUIA agregaCatalogo(InfoUIA newCatalogo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ListaInfoUIA getListaInfoUIA() {
+		
+		return super.getMiLista();
+	}
+	
 
 }

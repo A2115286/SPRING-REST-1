@@ -1,6 +1,7 @@
 package uia.com.api.ContabilidadUIA.modelo.gestor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import uia.com.api.ContabilidadUIA.modelo.clientes.InfoUIA;
 
@@ -26,4 +27,12 @@ public class DecoradorProveedores extends Decorador {
 	{
 		return super.getLista();
 	}
+
+
+	public InfoUIA agregaCatalogo(InfoUIA newCliente) {
+		return newCliente;
+	}
+	
+
+
 }

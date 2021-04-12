@@ -47,5 +47,13 @@ public  class ListaInfoUIA
 		public void setName(String name) {
 			this.name = name;
 		}
+
+		public void agregaCatalogo(InfoUIA newCatalogo) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		
+		
 	    
 }

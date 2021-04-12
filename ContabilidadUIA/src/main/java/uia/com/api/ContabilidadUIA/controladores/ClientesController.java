@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,7 +26,7 @@ public class ClientesController {
 	 */
 	private ClientesRepositorio clientes = new ClientesRepositorio();
 	
-	@RequestMapping("clientes")
+	@RequestMapping("/clientes")
 	public ResponseEntity<List<InfoUIA>> getAllClientes(){
 		System.out.println("Saludos desde getAllClientes()");
 		return ResponseEntity.ok(clientes.getListaProveedores());
@@ -42,5 +43,17 @@ public class ClientesController {
 		System.out.println("Saludos desde getAllClientes()");
 		return ResponseEntity.ok((InfoUIA)clientes.getProveedor(clienteId));
 	}
+	
+	/*
+	 * Save a new cliente
+	 * @param cliente
+	 * @return 
+	 */
+	@RequestMapping(value="clientes", method=RequestMethod.POST)
+	public ResponseEntity<InfoUIA> agregaCliente(@RequestBody InfoUIA newCliente){
+		System.out.println("Saludos desde agregaCliente()");
+		return ResponseEntity.ok((InfoUIA)clientes.agregaCatalogo(newCliente));
+	}
+	
 	
 }

@@ -3,10 +3,17 @@ package uia.com.api.ContabilidadUIA.modelo.gestor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.databind.deser.std.MapEntryDeserializer;
+
+
 import uia.com.api.ContabilidadUIA.modelo.clientes.InfoUIA;
+import uia.com.api.ContabilidadUIA.modelo.clientes.ListaInfoUIA;
 
 
 public class Decorador implements IGestor {
@@ -78,7 +85,7 @@ public class Decorador implements IGestor {
 
 
 	private void carga(String tipo) {
-		
+		System.out.println("carga");
 		System.out.println(this.gestor.getClass().getSimpleName());
 		
 		if(this.gestor.getCatalogoMaestro() != null)
@@ -121,6 +128,7 @@ public class Decorador implements IGestor {
 	
 private void carga(String tipo, List<InfoUIA> subCatalogo, String nombre) 
 {
+	System.out.println("voidcarga");
 	if(subCatalogo != null)
 	{
 				subCatalogo.forEach(p->{
@@ -185,9 +193,58 @@ private void carga(String tipo, List<InfoUIA> subCatalogo, String nombre)
 
 
 	@Override
-	public void setCatalogo(Map<String, InfoUIA> p) {
+	public InfoUIA agregaCatalogo(InfoUIA newCatalogo) {
+		System.out.println("*"+this.gestor.getClass().getSimpleName());		
+		String tipo=newCatalogo.getType();
+		int i=0;
+		
+		if(this.gestor.getCatalogoMaestro() != null)
+		{
+			Iterator<Entry<String, InfoUIA>> tabla = this.gestor.getCatalogoMaestro().entrySet().iterator();
+			
+			while (tabla.hasNext())
+			{
+				Map.Entry<String, InfoUIA> nodo = (Map.Entry<String, InfoUIA>) tabla.next();
+				if(nodo.getValue().getType().contentEquals(tipo))
+				{
+					this.gestor.getCatalogoMaestro().put(newCatalogo.getName(), newCatalogo);
+					this.gestor.getListaInfoUIA().agregaCatalogo(newCatalogo);
+					this.gestor.salva();
+					return newCatalogo;
+				}
+				else if (!(this.ancestro.contains("Gestor")))
+				{
+					carga(tipo, nodo.getValue().getItems(), newCatalogo);
+				}
+			}
+		
+		}
+		else
+		{
+			System.out.println("Alto");
+		}
+	return null;	
+	}
+
+
+	private void carga(String tipo, List<InfoUIA> items, InfoUIA newCatalogo) {
+		// TODO Auto-generated method stub
+		
+	}	
+
+
+	@Override
+	public void salva() {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public ListaInfoUIA getListaInfoUIA() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
