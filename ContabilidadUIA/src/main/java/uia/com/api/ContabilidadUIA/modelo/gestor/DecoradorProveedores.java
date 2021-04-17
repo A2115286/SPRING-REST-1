@@ -22,16 +22,7 @@ public class DecoradorProveedores extends Decorador {
 	{
 		super.Print();
 	}
-
-	public ArrayList<InfoUIA> getLista()
-	{
-		return super.getLista();
-	}
-
-
-	public InfoUIA agregaCatalogo(InfoUIA newCliente) {
-		return newCliente;
-	}
+	
 	
 
 

@@ -57,7 +57,7 @@ public class Gestor extends AGestor{
 
 
 	@Override
-	public InfoUIA agregaCatalogo(InfoUIA newCatalogo) {
+	public InfoUIA agregaCatalogo(InfoUIA p) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -66,8 +66,14 @@ public class Gestor extends AGestor{
 	@Override
 	public ListaInfoUIA getListaInfoUIA() {
 		
-		return super.getMiLista();
+		return super.getMiLista(); 
 	}
-	
+
+
+	@Override
+	public void setCatalogo(Map<String, InfoUIA> p) {
+		// TODO Auto-generated method stub
+		
+	}	
 
 }

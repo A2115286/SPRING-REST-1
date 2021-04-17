@@ -20,13 +20,24 @@ public abstract class AGestor implements IGestor{
 	ListaInfoUIA miLista = null;
 	protected Map<String, InfoUIA> catalogoMaestro = null;
 	public String  nomFile;
+	
+	 public ListaInfoUIA getMiLista() {
+			return miLista;
+		}
 
+
+		public void setMiLista(ListaInfoUIA miLista) {
+			this.miLista = miLista;
+		}
+
+		public void setCatalogoMaestro(Map<String, InfoUIA> catalogoMaestro) {
+			this.catalogoMaestro = catalogoMaestro;
+		}
 	
-	
-    public AGestor(String nomFile)
+    public AGestor(String nomArchivo)
     {
     	ObjectMapper mapper = new ObjectMapper();
-        
+    	nomFile = nomArchivo;
         
         
 		try {
@@ -114,10 +125,6 @@ public abstract class AGestor implements IGestor{
 
 	}
 
-
-	public ListaInfoUIA getMiLista() {
-		return miLista;
-	}
 
 
 	

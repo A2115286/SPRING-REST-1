@@ -49,8 +49,8 @@ public  class ListaInfoUIA
 		}
 
 		public void agregaCatalogo(InfoUIA newCatalogo) {
-			// TODO Auto-generated method stub
-			
+			if(this.items != null)
+				this.items.add(newCatalogo);		
 		}
 
 		

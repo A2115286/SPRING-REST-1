@@ -194,7 +194,7 @@ private void carga(String tipo, List<InfoUIA> subCatalogo, String nombre)
 
 	@Override
 	public InfoUIA agregaCatalogo(InfoUIA newCatalogo) {
-		System.out.println("*"+this.gestor.getClass().getSimpleName());		
+		System.out.println(this.gestor.getClass().getSimpleName());		
 		String tipo=newCatalogo.getType();
 		int i=0;
 		
@@ -227,8 +227,24 @@ private void carga(String tipo, List<InfoUIA> subCatalogo, String nombre)
 	}
 
 
-	private void carga(String tipo, List<InfoUIA> items, InfoUIA newCatalogo) {
-		// TODO Auto-generated method stub
+
+	private void carga(String tipo, List<InfoUIA> subCatalogo, InfoUIA newCatalogo) {
+		if(subCatalogo != null)
+		{
+					subCatalogo.forEach(p->{
+						if(p.getClass().getSimpleName().contains(tipo))
+						{
+							lista.add(newCatalogo);
+						}
+						else
+						{
+							if(p.getName().contains(nombre))
+								carga(tipo, p.getItems(), p.getName());
+							else
+								carga(tipo, p.getItems(), newCatalogo);
+						}
+					});
+		}
 		
 	}	
 
@@ -244,6 +260,13 @@ private void carga(String tipo, List<InfoUIA> subCatalogo, String nombre)
 	public ListaInfoUIA getListaInfoUIA() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void setCatalogo(Map<String, InfoUIA> p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

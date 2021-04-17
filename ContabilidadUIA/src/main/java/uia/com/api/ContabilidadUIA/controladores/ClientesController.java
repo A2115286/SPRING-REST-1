@@ -26,9 +26,9 @@ public class ClientesController {
 	 */
 	private ClientesRepositorio clientes = new ClientesRepositorio();
 	
-	@RequestMapping("/clientes")
+	@RequestMapping(value="clientes",  method=RequestMethod.GET)
 	public ResponseEntity<List<InfoUIA>> getAllClientes(){
-		System.out.println("Saludos desde getAllClientes()");
+		System.out.println("Saludos desde getAllClientes()Uno");
 		return ResponseEntity.ok(clientes.getListaProveedores());
 	}
 	
@@ -50,7 +50,7 @@ public class ClientesController {
 	 * @return 
 	 */
 	@RequestMapping(value="clientes", method=RequestMethod.POST)
-	public ResponseEntity<InfoUIA> agregaCliente(@RequestBody InfoUIA newCliente){
+	public ResponseEntity<Object> agregaCliente(@RequestBody InfoUIA newCliente){
 		System.out.println("Saludos desde agregaCliente()");
 		return ResponseEntity.ok((InfoUIA)clientes.agregaCatalogo(newCliente));
 	}

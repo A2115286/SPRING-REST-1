@@ -11,13 +11,12 @@ import uia.com.api.ContabilidadUIA.modelo.proveedores.Proveedor;
 
 public class ClientesRepositorio {
 			
-	    public Gestor contabilidad =  null;
-		public DecoradorProveedores gestorProveedores = null;		
-
+	    
+		public DecoradorProveedores gestorProveedores = null;
 		public Proveedor proveedor = null;
 		public String clienteId="";
+		public Gestor contabilidad =  null;
 		public ArrayList<InfoUIA> listaproveedores;
-		private InfoUIA newCliente;
 		
 		
 
@@ -94,15 +93,12 @@ public class ClientesRepositorio {
 			this.listaproveedores = listaproveedores;
 		}
 		
-		public InfoUIA getNewCliente() {
-			return newCliente;
+		
+
+		public Object setProveedor(String newCliente) {
+			// TODO Auto-generated method stub
+			return null;
 		}
-
-
-		public void setNewCliente(InfoUIA newCliente) {
-			this.newCliente = newCliente;
-		}
-
 		
 	
 		

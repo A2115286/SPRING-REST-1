@@ -1,6 +1,6 @@
 package  uia.com.api.ContabilidadUIA.modelo;
 
-public class User {
+public class User { /*
 	private String userName;
 
 	public String getUserName() {
@@ -10,4 +10,5 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	*/
 }
